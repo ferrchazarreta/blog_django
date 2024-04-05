@@ -5,3 +5,6 @@ from django.http import HttpResponse
 
 def index(request):
     return HttpResponse('Blog Django')
+
+def about(request):
+    return HttpResponse('Acerca del Blog')
