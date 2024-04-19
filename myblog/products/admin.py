@@ -10,7 +10,7 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ('price','name','category__name',)
     list_editable = ('price', )
     empty_value_display = 'No hay datos'
-    readonly_fields = ('name')
+    readonly_fields = ('name',)
     list_display = ('name',
                     'description',
                     'price',
@@ -20,9 +20,6 @@ class ProductAdmin(admin.ModelAdmin):
                     'get_total',
                     'get_stock',
     )
-
-    def get_total(self):
-        return (self.price * self.stock)
     
     def get_stock (self,obj):
         POCO = '#FF0000'
