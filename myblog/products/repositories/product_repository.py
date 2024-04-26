@@ -24,9 +24,9 @@ class ProductRepository:
     
     def get_by_id(
         self,
-        product_id,
+        id,
         ) -> Optional[Product]:
-        return Product.objects.filter(id=product_id).first()
+        return Product.objects.filter(id=id).first()
     
     def get_product_on_price_range(
         self,
@@ -37,3 +37,8 @@ class ProductRepository:
             price__range = (min_price,max_price)
         )
     
+    def delete_product(
+        self,
+        producto
+        ):
+        return producto.delete()
