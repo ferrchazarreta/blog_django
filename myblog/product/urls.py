@@ -13,7 +13,13 @@ from product.views.category_view import (
     category_delete,
     category_update,
 )
-
+from product.views.supplier_view import (
+    supplier_list,
+    supplier_create,
+    supplier_delete,
+    supplier_update,
+    supplier_detail,
+)
 urlpatterns = [
     # Rutas de productos
     path(route='', view=product_list, name='product_list'),
@@ -27,4 +33,11 @@ urlpatterns = [
     path(route='category/create/', view=category_create, name='category_create'),
     path(route='category/<int:id>/update/', view=category_update, name='category_update'),
     path(route='category/<int:id>/delete/', view=category_delete, name='category_delete'),
+    
+    # Rutas de proveedores
+    path(route='supplier/', view=supplier_list, name='supplier_list'),
+    path(route='supplier/create/', view=supplier_create, name='supplier_create'),
+    path(route='supplier/<int:id>/update/', view=supplier_update, name='supplier_update'),
+    path(route='supplier/<int:id>/detail/', view=supplier_detail, name='supplier_detail'),
+    path(route='supplier/<int:id>/delete/', view=supplier_delete, name='supplier_delete'),
 ]
