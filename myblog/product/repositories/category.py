@@ -15,14 +15,6 @@ class CategoryRepository:
             category = None
         return category
     
-    def create(
-        self,
-        nombre: str,
-    ):
-        return Category.objects.create(
-            name=nombre,
-        )
-    
     def delete(self, categoria: Category):
         return categoria.delete()
     
@@ -33,3 +25,15 @@ class CategoryRepository:
     ) -> Category:
         categoria.name = nombre
         categoria.save()
+
+    def create(
+        self,
+        nombre: str,
+    ) -> Category:
+        category = Category.objects.filter(name=nombre)
+        if category:
+            return "Ya existe esa categoria"
+        return Category.objects.create(
+            name=nombre,
+        )
+    

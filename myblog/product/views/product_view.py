@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render
+from django.contrib.auth.decorators import login_required
 
 from product.models import Category
 from product.repositories.product import ProductRepository
@@ -28,6 +29,7 @@ def product_delete(request, id):
     repo.delete(producto=producto)
     return redirect('product_list')
 
+@login_required(login_url='login')
 def product_update(request, id):
     product = repo.get_by_id(id=id)
     categorias = Category.objects.all()

@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 
 from product.repositories.supplier import SupplierRepository
 
@@ -8,7 +9,7 @@ def supplier_list(request):
     proveedores = repo.get_all()
     return render(
         request,
-        'categories/list.html',
+        'suppliers/list.html',
         dict(
             suppliers=proveedores
         )
@@ -29,6 +30,7 @@ def supplier_delete(request, id):
     repo.delete(proveedor=proveedor)
     return redirect('supplier_list')
 
+@login_required(login_url='login')
 def supplier_update(request, id):
     supplier = repo.get_by_id(id=id)
     if request.method == "POST":

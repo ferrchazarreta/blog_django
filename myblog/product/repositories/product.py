@@ -27,10 +27,6 @@ class ProductRepository:
         min_price: float,
         max_price: float,
     ) -> List[Product]:
-        #products = Product.objects.filter(
-        #    price__gt=min_price,
-        #    price__lt=max_price,
-        #)
         products = Product.objects.filter(
             price__range=(min_price, max_price)
         )

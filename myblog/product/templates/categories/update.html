@@ -1,7 +1,8 @@
-{% extends "index/base.html" %}
+{% extends "home/base.html" %}
 {% block content %}
 <div class="container mt-3">
     <h2>Actualizar Categoria</h2>
+    <h3>Nombre actual {{category.name}}</h3>
     <form method="post">
         {% csrf_token %}
         <div class="form-group">
